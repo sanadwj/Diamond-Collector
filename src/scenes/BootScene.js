@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 import 'phaser';
-import logo from '../assets/logo.png';
+import logo from '../assets/zenva_logo.png';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -8,6 +9,7 @@ export default class BootScene extends Phaser.Scene {
 
   preload() {
     this.load.image('logo', logo);
+    this.add.image(400, 300, 'logo');
   }
 
   create() {

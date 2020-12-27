@@ -3,6 +3,10 @@ import 'phaser';
 import buttonOne from '../assets/ui/blue_button02.png';
 import buttonTwo from '../assets/ui/blue_button03.png';
 import logo from '../assets/logo.png';
+import box from '../assets/ui/grey_box.png';
+import checkBox from '../assets/ui/blue_boxCheckmark.png';
+// import bgMusic from '../assets/TownTheme.mp3';
+
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -69,13 +73,32 @@ export default class PreloaderScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
+      this.ready();
     });
+
+    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     this.load.image('buttonOne', buttonOne);
     this.load.image('buttonTwo', buttonTwo);
     this.load.image('logo', logo);
+    this.load.image('box', box);
+    this.load.image('checkedBox', checkBox);
+    // this.load.audio('bgMusic', bgMusic);
+  }
+  
+  create() {
+    
   }
 
-  create() {
+  init() {
+    this.readyCount = 0;
+  }
+
+  ready() {
+    // eslint-disable-next-line no-plusplus
+    this.readyCount++;
+    if (this.readyCount === 2) {
+      this.scene.start('Title');
+    }
   }
 }
