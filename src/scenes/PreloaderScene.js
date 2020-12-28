@@ -1,11 +1,12 @@
+/* eslint-disable no-undef */
 /* eslint-disable radix */
 import 'phaser';
-import buttonOne from '../assets/ui/blue_button02.png';
-import buttonTwo from '../assets/ui/blue_button03.png';
+import buttonOne from '../assets/ui/buttonNormal.png';
+import buttonTwo from '../assets/ui/buttonPressed.png';
 import logo from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkBox from '../assets/ui/blue_boxCheckmark.png';
-// import bgMusic from '../assets/TownTheme.mp3';
+import bg from '../assets/red/bkg1_front5.png';
 
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -20,11 +21,11 @@ export default class PreloaderScene extends Phaser.Scene {
     progressBox.fillRect(240, 270, 320, 50);
 
 
-    const { width } = this.cameras;
-    const { height } = this.cameras;
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
     const loadingText = this.make.text({
       x: width / 2,
-      y: height / 2 - 50,
+      y: height / 2 - 60,
       text: 'Loading...',
       style: {
         font: '20px monospace',
@@ -40,7 +41,7 @@ export default class PreloaderScene extends Phaser.Scene {
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#ffffff',
+        fill: '#ff0000',
       },
     });
     percentText.setOrigin(0.5, 0.5);
@@ -83,10 +84,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('logo', logo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkBox);
-    // this.load.audio('bgMusic', bgMusic);
-  }
-  
-  create() {
+    this.load.audio('bgMusic', ['../src/assets/TownTheme.mp3']);
     
   }
 

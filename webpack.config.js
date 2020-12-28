@@ -26,6 +26,7 @@ module.exports = {
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
       title: 'Development',
+      template: './index.html',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -53,7 +54,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.js$|jsx/,
         include: path.resolve(__dirname, 'src/'),
         use: {
           loader: 'babel-loader',
@@ -88,6 +89,10 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: [/\.vert$/, /\.frag$/],
+        use: 'raw-loader',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
