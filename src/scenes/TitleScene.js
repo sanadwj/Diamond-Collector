@@ -22,7 +22,7 @@ export default class TitleScene extends Phaser.Scene {
     this.instructionButton = new Button(this, config.width / 2, config.height / 2 - 250, 'buttonOne', 'buttonTwo', 'Instruction', 'Instruction');
 
 
-    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 150, 'buttonOne', 'buttonTwo', 'Play', 'Game');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 150, 'buttonOne', 'buttonTwo', 'Play', 'Input');
 
 
     this.optionsButton = new Button(this, config.width / 2, config.height / 2 - 50, 'buttonOne', 'buttonTwo', 'Options', 'Options');
@@ -37,7 +37,7 @@ export default class TitleScene extends Phaser.Scene {
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
       this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
-      this.bgMusic.play();
+      // this.bgMusic.play();
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
     }

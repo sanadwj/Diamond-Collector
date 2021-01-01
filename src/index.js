@@ -10,6 +10,8 @@ import OptionsScene from './scenes/OptionsScene';
 import CreditsScene from './scenes/CreditsScene';
 import Board from './scenes/leaderBoard';
 import GameScene from './scenes/GameScene';
+import input from './scenes/InputScene';
+import './css/style.css';
 
 
 class Game extends Phaser.Game {
@@ -19,6 +21,7 @@ class Game extends Phaser.Game {
     this.globals = { model };
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('Input', input);
     this.scene.add('Title', TitleScene);
     this.scene.add('Options', OptionsScene);
     this.scene.add('Credits', CreditsScene);

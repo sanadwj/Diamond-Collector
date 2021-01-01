@@ -15,8 +15,8 @@ export default {
       createContainer: true,
     },
     min: {
-      width: 1024,
-      height: 720,
+      width: 800,
+      height: 600,
     },
     max: {
       width: 1920,
