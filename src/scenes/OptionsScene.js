@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 import 'phaser';
+import config from '../Config/config';
+import Button from '../Objects/Button';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
@@ -10,7 +12,7 @@ export default class OptionsScene extends Phaser.Scene {
   create() {
     this.model = this.sys.game.globals.model;
 
-    this.text = this.add.text(300, 100, 'Options', { fontSize: 40 });
+    this.text = this.add.text(config.width / 2 - 80, config.height / 2 - 250, 'Options', { fontSize: 40 });
     this.musicButton = this.add.image(200, 200, 'checkedBox');
     this.musicText = this.add.text(250, 190, 'Music Enabled', { fontSize: 24 });
 
@@ -30,17 +32,9 @@ export default class OptionsScene extends Phaser.Scene {
       this.updateAudio();
     });
 
-    this.updateAudio();
 
-    this.menuButton = this.add.sprite(400, 500, 'buttonOne').setInteractive();
-    this.menuText = this.add.text(0, 0, 'Menu', { fontSize: '32px', fill: '#fff' });
-    Phaser.Display.Align.In.Center(this.menuText, this.menuButton);
-
-    this.menuButton.on('pointerdown', () => {
-      this.scene.start('Title');
-    });
-
-    this.updateAudio();
+    this.menuButton = new Button(this, config.width / 2, config.height / 2 + 100, 'buttonOne', 'buttonTwo', 'Menu', 'Title');
+    this.menuButton.setScale(0.6, 0.5);
   }
 
   updateAudio() {

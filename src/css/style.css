@@ -1,0 +1,219 @@
+body {
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+canvas {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+#name-form {
+  display: none;
+  background: #ccc;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  width: 350px;
+  height: 300px;
+  margin: auto auto auto 5rem;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  bottom: 25%;
+}
+
+
+input[type="text"] {
+  background: linear-gradient(top, #d6d7d7, #dee0e0);
+  border: 1px solid #a1a3a3;
+  border-radius: 4px;
+  box-shadow: 0 1px #fff;
+  box-sizing: border-box;
+  color: #696969;
+  height: 39px;
+  margin: 31px 0 0 29px;
+  padding-left: 37px;
+  transition: box-shadow 0.3s;
+  width: 240px;
+}
+
+
+
+input[name="saveNameBtn"] {
+  width: 75px;
+  height: 75px;
+  display: block;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0px #a68837;
+  padding-top: 6px;
+  margin: 29px 0 0 220px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background-image: url(../assets/ui/Button_14.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+input[name="back"] {
+  width: 75px;
+  height: 75px;
+  display: block;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0px #a68837;
+  padding-top: 6px;
+  margin: 29px 0 0 220px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background-image: url(../assets/ui/Button_78.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.shadow {
+  background: #000;
+  border-radius: 12px 12px 4px 4px;
+  box-shadow: 0 0 20px 10px #000;
+  height: 12px;
+  margin: 30px auto;
+  opacity: 0.2;
+  width: 270px;
+}
+
+input[name="saveNameBtn"]:hover {
+  background-image: url(../assets/ui/Button_15.png);
+}
+
+input[name="back"]:hover {
+  background-image: url(../assets/ui/Button_79.png);
+}
+
+#score {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #5d1512;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  
+ 
+  width: 70%;
+  height: auto;
+  
+}
+
+#score > span {
+  width: 100%;
+  padding: 8%;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+#menu {
+  position: absolute;
+  bottom: 5%;
+  left: 30%;
+  width: 240px;
+  height: 35px;
+  display: none;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0px #a68837;
+  padding-top: 6px;
+  margin: 29px 0 0 29px;
+  cursor: pointer;
+  border: none;
+  background-color: #5d1512;
+  background-image: linear-gradient(top,#5d1560, #3111);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset 0px 1px 0px #0e1011, 0px 5px 0px 0px hsl(120, 4%, 5%), 0px 10px 5px #999;
+}
+
+#warning {
+  display: none;
+}
+
+/* Browsers 800px and below just for view because it only works with a keyboard */
+@media screen and (max-width: 1100px) {
+  #name-form {
+    display: none;
+    width: 500px;
+    height: 300px;
+    margin: 0;
+  }
+
+  /* input[type="text"] {
+    height: 20px;
+    margin: 20px 0 0 10px;
+    padding-left: 17px;
+    width: 140px;
+  }
+
+  input[type="button"] {
+    width: 130px;
+    height: 20px;
+    font-size: 12px;
+    padding-top: 3px;
+    margin: 29px 0 0 45px;
+  } */
+}
+
+@media screen and (max-width: 800px) {
+  #name-form {
+    display: none;
+    width: 200px;
+    height: 150px;
+    margin: auto 1rem 1rem auto !important;
+  }
+
+  /* input[type="text"] {
+    height: 15px;
+    margin: 15px 0 0 10px;
+    padding-left: 15px;
+    width: 120px;
+  }
+
+  input[type="submit"] {
+    width: 120px;
+    height: 15px;
+    font-size: 10px;
+    padding-top: 3px;
+    margin: 29px 0 0 45px;
+  } */
+}

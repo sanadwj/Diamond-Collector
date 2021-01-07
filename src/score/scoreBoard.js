@@ -1,6 +1,7 @@
+/* eslint-disable func-names */
 import score from './api';
 
-const Board = (function() {
+const Board = (function () {
   const sortData = (data) => {
     const arr = data;
     const len = arr.length;
@@ -15,11 +16,11 @@ const Board = (function() {
     }
     return arr;
   };
-  
+
 
   const board = (arr) => {
     const board = document.getElementById('score');
-    console.log(board);
+    board.style.display = 'grid';
 
     arr.slice(0, 5).forEach((item, i) => {
       const ranking = document.createElement('span', { class: 'ranking' });

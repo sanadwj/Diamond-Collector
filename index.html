@@ -3,21 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="./src/css/style.css">
     
     <title>Space</title>
   </head>
   <body>
-    <form id="name-form" autocomplete="off">
-      <label for="input-name">Enter your name:</label>
+    <form id="name-form" autocomplete="off" style="display:none">
       <input type="text" placeholder="Your Name" id="name" name="name">
       <span id="warning">Please Enter your Name</span>
-      <input type="button" value="Start" name="saveNameBtn">
+      <input type="button"  name="saveNameBtn">
+      <input type="button"  name="back">
     </form>
-    <div id="score">
+    <div id="score" style="display:none">
       <span><strong>Rank</strong></span>
       <span><strong>Name</strong></span>
       <span><strong>Score</strong></span>
     </div>
+    <input type="button" value="Menu" id="menu" style="display:none">
   </body>
 
 </html>

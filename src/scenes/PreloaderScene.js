@@ -1,12 +1,25 @@
 /* eslint-disable no-undef */
 /* eslint-disable radix */
 import 'phaser';
-import buttonOne from '../assets/ui/buttonNormal.png';
-import buttonTwo from '../assets/ui/buttonPressed.png';
+import buttonOne from '../assets/ui/Button_Play.png';
+import buttonTwo from '../assets/ui/Button_06.png';
+import backBtnOne from '../assets/ui/Button_78.png';
+import backBtnTwo from '../assets/ui/Button_79.png';
 import logo from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkBox from '../assets/ui/blue_boxCheckmark.png';
 import bg from '../assets/red/bkg1_front5.png';
+import platform from '../assets/platform2.png';
+import platform3 from '../assets/platforms/platform3.png';
+import platform4 from '../assets/platforms/platform4.png';
+import platform5 from '../assets/platforms/platform5.png';
+import platform6 from '../assets/platforms/platform6.png';
+import dim from '../assets/dim.png';
+import robo from '../assets/run.png';
+import die from '../assets/die.png';
+import jump from '../assets/jump.png';
+import background from '../assets/bg_forest.png';
+import fire from '../assets/fire3.png';
 
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -80,12 +93,87 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     this.load.image('buttonOne', buttonOne);
+    this.load.image('backBtnOne', backBtnOne);
+    this.load.image('backBtnTwo', backBtnTwo);
     this.load.image('buttonTwo', buttonTwo);
     this.load.image('logo', logo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkBox);
     this.load.audio('bgMusic', ['../src/assets/TownTheme.mp3']);
-    
+
+
+    this.load.image('platform', platform);
+    this.load.image('platform3', platform3);
+    this.load.image('platform4', platform4);
+    this.load.image('platform5', platform5);
+    this.load.image('platform6', platform6);
+    this.load.image('bground', background);
+    this.load.image('dim', dim);
+    this.load.spritesheet('fire', fire, {
+      frameWidth: 60,
+      frameHeight: 64,
+    });
+    this.load.spritesheet('robo', robo, {
+      frameWidth: 260,
+      frameHeight: 240,
+    });
+
+    this.load.spritesheet('die', die, {
+      frameWidth: 260,
+      frameHeight: 230,
+    });
+    this.load.spritesheet('jump', jump, {
+      frameWidth: 260,
+      frameHeight: 230,
+    });
+  }
+
+  create() {
+    // setting player animation
+    this.anims.create({
+      key: 'run',
+      frames: this.anims.generateFrameNumbers('robo', {
+        start: 1,
+        end: 6,
+      }),
+      frameRate: 6,
+      repeat: -1,
+    });
+
+    // setting player animation
+    this.anims.create({
+      key: 'died',
+      frames: this.anims.generateFrameNumbers('die', {
+        start: 1,
+        end: 4,
+      }),
+      frameRate: 5,
+      repeat: -1,
+    });
+
+    // setting player animation
+    this.anims.create({
+      key: 'jumping',
+      frames: this.anims.generateFrameNumbers('jump', {
+        start: 1,
+        end: 4,
+      }),
+      frameRate: 5,
+      repeat: -1,
+    });
+
+    // setting fire animation
+    this.anims.create({
+      key: 'burn',
+      frames: this.anims.generateFrameNumbers('fire', {
+        start: 0,
+        end: 4,
+      }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+
   }
 
   init() {

@@ -10,15 +10,16 @@ export default class LeaderBoard extends Phaser.Scene {
   }
 
   create() {
+    this.add.text(config.width / 3, 8, 'LEADERBOARD', { color: 'white', fontSize: '28px' });
 
-    this.add.text(config.width / 3, 10, 'LEADERBOARD', { color: 'white', fontSize: '32px' });
+    const menuButton = document.getElementById('menu');
+    menuButton.style.display = 'block';
 
-    this.menuButton = this.add.sprite(400, 500, 'buttonOne').setInteractive();
-    this.menuText = this.add.text(0, 0, 'Menu', { fontSize: '28px', fill: '#fff' });
-    Phaser.Display.Align.In.Center(this.menuText, this.menuButton);
-
-    this.menuButton.on('pointerdown', () => {
+    menuButton.addEventListener('click', () => {
+      const score = document.getElementById('score');
       this.scene.start('Title');
+      score.style.display = 'none';
+      menuButton.style.display = 'none';
     });
     scoreBoard.create();
   }
