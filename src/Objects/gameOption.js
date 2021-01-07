@@ -6,7 +6,7 @@ const option = () => {
     platformSpeedRange: [300, 300],
 
     // mountain speed, in pixels per second
-    skySpeed: 80,
+    cloudSpeed: 40,
 
     // spawn range, how far should be the rightmost platform from the right edge
     // before next platform spawns, in pixels

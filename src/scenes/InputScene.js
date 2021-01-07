@@ -2,16 +2,12 @@ import Phaser from 'phaser';
 
 import config from '../Config/config';
 import scoreData from '../score/api';
-import Button from '../Objects/Button';
 
 export default class InputScene extends Phaser.Scene {
-  // preload() {
-  //   this.load.html('nameform', '../src/assets/form.html');
-  // }
 
   create() {
     const self = this;
-    const text = this.add.text(config.width / 2 - 80, config.height / 2 - 200, 'Please, enter your name', { color: 'white', fontFamily: 'Arial', fontSize: '32px ' });
+    const text = this.add.text(config.width / 2 - 80, config.height / 2 - 250, 'Please, enter your name', { color: 'white', fontFamily: 'Arial', fontSize: '28px ' });
     text.setScale(0.7);
     const element = document.getElementById('name-form');
     element.style.display = 'block';

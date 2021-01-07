@@ -20,6 +20,7 @@ import die from '../assets/die.png';
 import jump from '../assets/jump.png';
 import background from '../assets/bg_forest.png';
 import fire from '../assets/fire3.png';
+import cloud from '../assets/objects/cloud.png';
 
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -126,6 +127,8 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 260,
       frameHeight: 230,
     });
+    // mountains are a sprite sheet made by 512x512 pixels
+    this.load.image('cloud', cloud);
   }
 
   create() {

@@ -28,7 +28,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.add.image(config.width / 2, config.height / 2, 'bground');
     // group with all active mountains.
-    this.mountainGroup = this.add.group();
+    this.cloudGroup = this.add.group();
 
     // group with all active platforms.
     this.platformGroup = this.add.group({
@@ -84,7 +84,7 @@ export default class GameScene extends Phaser.Scene {
       },
     });
     // // adding a mountain
-    // this.addMountains()
+    this.addClouds();
 
     // keeping track of added platforms
     this.addedPlatforms = 0;
@@ -143,6 +143,41 @@ export default class GameScene extends Phaser.Scene {
 
     // checking for input
     this.input.keyboard.on('keydown-SPACE', this.jump, this);
+  }
+
+  // adding mountains
+  addClouds() {
+    const rightmostCloud = this.getRightmostCloud();
+    
+      const cloud = this.physics.add.sprite(rightmostCloud + Phaser.Math.Between(100, 350), config.height / 2 - Phaser.Math.Between(50, 100), 'cloud');
+      cloud.setOrigin(0.5, 1);
+      cloud.body.setVelocityX(gameOptions.cloudSpeed * -1);
+      this.cloudGroup.add(cloud);
+      // if (Phaser.Math.Between(0, 1)) {
+      //   cloud.setDepth(1);
+      // }
+      // this.addClouds();
+    
+  }
+
+  // addClouds() {
+    
+    
+  //   const cloud = this.add.image(config.width / 2 , config.height / 2 , 'cloud');
+    
+  //   this.cloudGroup.add(cloud);
+    
+   
+    
+  // }
+
+  // getting rightmost mountain x position
+  getRightmostCloud() {
+    let rightmostCloud = -200;
+    this.cloudGroup.getChildren().forEach((cloud) => {
+      rightmostCloud = Math.max(rightmostCloud, cloud.x);
+    });
+    return rightmostCloud;
   }
 
   addPlatform(platformWidth, posX, posY) {
@@ -274,15 +309,10 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
     // recycling mountains
-    this.mountainGroup.getChildren().forEach(function (mountain) {
-      if (mountain.x < -mountain.displayWidth) {
-        const rightmostMountain = this.getRightmostMountain();
-        mountain.x = rightmostMountain + Phaser.Math.Between(100, 350);
-        mountain.y = config.height + Phaser.Math.Between(0, 100);
-        mountain.setFrame(Phaser.Math.Between(0, 3))
-        if (Phaser.Math.Between(0, 1)) {
-          mountain.setDepth(1);
-        }
+    this.cloudGroup.getChildren().forEach(function (cloud) {
+      if (cloud.x < -cloud.displayWidth / 2) {
+        this.cloudGroup.killAndHide(cloud);
+        this.fireGroup.remove(cloud);
       }
     }, this);
 
