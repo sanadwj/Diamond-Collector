@@ -9,18 +9,19 @@ import logo from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkBox from '../assets/ui/blue_boxCheckmark.png';
 import bg from '../assets/red/bkg1_front5.png';
-import platform from '../assets/platform2.png';
-import platform3 from '../assets/platforms/platform3.png';
-import platform4 from '../assets/platforms/platform4.png';
-import platform5 from '../assets/platforms/platform5.png';
-import platform6 from '../assets/platforms/platform6.png';
+import platform from '../assets/platforms/platform.png';
 import dim from '../assets/dim.png';
 import robo from '../assets/run.png';
 import die from '../assets/die.png';
 import jump from '../assets/jump.png';
-import background from '../assets/bg_forest.png';
+import background from '../assets/ui/BG.png';
 import fire from '../assets/fire3.png';
 import cloud from '../assets/objects/cloud.png';
+import bush from '../assets/objects/Bush.png';
+import tree from '../assets/objects/Tree_2.png';
+import stone from '../assets/objects/Stone.png';
+import mashroom from '../assets/objects/Mushroom_2.png';
+import water from '../assets/platforms/water.png';
 
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -104,14 +105,15 @@ export default class PreloaderScene extends Phaser.Scene {
 
 
     this.load.image('platform', platform);
-    this.load.image('platform3', platform3);
-    this.load.image('platform4', platform4);
-    this.load.image('platform5', platform5);
-    this.load.image('platform6', platform6);
+    this.load.image('water', water);
     this.load.image('bground', background);
     this.load.image('dim', dim);
+    this.load.image('tree', tree);
+    this.load.image('bush', bush);
+    this.load.image('stoun', stone);
+    this.load.image('mashroom', mashroom);
     this.load.spritesheet('fire', fire, {
-      frameWidth: 60,
+      frameWidth: 64,
       frameHeight: 64,
     });
     this.load.spritesheet('robo', robo, {

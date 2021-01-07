@@ -27,6 +27,9 @@ export default class GameScene extends Phaser.Scene {
   create() {
 
     this.add.image(config.width / 2, config.height / 2, 'bground');
+
+    // this.add.image(config.width * 2, config.height / 2 + 320, 'water');
+
     // group with all active mountains.
     this.cloudGroup = this.add.group();
 
@@ -45,6 +48,73 @@ export default class GameScene extends Phaser.Scene {
       // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(platform) {
         platform.scene.platformGroup.add(platform);
+      },
+    });
+
+
+    this.treeGroup = this.add.group({
+
+      // once a platform is removed, it's added to the pool
+      removeCallback(tree) {
+        tree.scene.treePool.add(tree);
+      },
+    });
+
+    this.treePool = this.add.group({
+
+      // once a platform is removed from the pool, it's added to the active platforms group
+      removeCallback(tree) {
+        tree.scene.treeGroup.add(tree);
+      },
+    });
+
+
+    this.bushGroup = this.add.group({
+
+      // once a platform is removed, it's added to the pool
+      removeCallback(bush) {
+        bush.scene.bushPool.add(bush);
+      },
+    });
+
+    this.bushPool = this.add.group({
+
+      // once a platform is removed from the pool, it's added to the active platforms group
+      removeCallback(bush) {
+        bush.scene.bushGroup.add(bush);
+      },
+    });
+
+    this.stoneGroup = this.add.group({
+
+      // once a platform is removed, it's added to the pool
+      removeCallback(stone) {
+        stone.scene.stonePool.add(stone);
+      },
+    });
+
+    this.stonePool = this.add.group({
+
+      // once a platform is removed from the pool, it's added to the active platforms group
+      removeCallback(stone) {
+        stone.scene.stoneGroup.add(stone);
+      },
+    });
+
+
+    this.mashroomGroup = this.add.group({
+
+      // once a platform is removed, it's added to the pool
+      removeCallback(mashroom) {
+        mashroom.scene.mashroomPool.add(mashroom);
+      },
+    });
+
+    this.mashroomPool = this.add.group({
+
+      // once a platform is removed from the pool, it's added to the active platforms group
+      removeCallback(mashroom) {
+        mashroom.scene.mashroomGroup.add(mashroom);
       },
     });
 
@@ -83,8 +153,6 @@ export default class GameScene extends Phaser.Scene {
         fire.scene.fireGroup.add(fire);
       },
     });
-    // // adding a mountain
-    this.addClouds();
 
     // keeping track of added platforms
     this.addedPlatforms = 0;
@@ -97,8 +165,8 @@ export default class GameScene extends Phaser.Scene {
 
     // adding the player;
     this.player = this.physics.add.sprite(gameOptions().playerStartPosition, config.height * 0.7, 'robo');
-    this.player.scaleX = 0.2;
-    this.player.scaleY = 0.2;
+    this.player.scaleX = 0.25;
+    this.player.scaleY = 0.25;
     this.player.setGravityY(gameOptions().playerGravity);
     this.player.setDepth(2);
 
@@ -140,44 +208,17 @@ export default class GameScene extends Phaser.Scene {
       this.physics.world.removeCollider(this.platformCollider);
     }, null, this);
 
+    this.physics.add.overlap(this.player, this.treeGroup, () => {
+
+    }, null, this);
+
+    this.physics.add.overlap(this.player, this.waterGroup, () => {
+
+    }, null, this);
+
 
     // checking for input
     this.input.keyboard.on('keydown-SPACE', this.jump, this);
-  }
-
-  // adding mountains
-  addClouds() {
-    const rightmostCloud = this.getRightmostCloud();
-    
-      const cloud = this.physics.add.sprite(rightmostCloud + Phaser.Math.Between(100, 350), config.height / 2 - Phaser.Math.Between(50, 100), 'cloud');
-      cloud.setOrigin(0.5, 1);
-      cloud.body.setVelocityX(gameOptions.cloudSpeed * -1);
-      this.cloudGroup.add(cloud);
-      // if (Phaser.Math.Between(0, 1)) {
-      //   cloud.setDepth(1);
-      // }
-      // this.addClouds();
-    
-  }
-
-  // addClouds() {
-    
-    
-  //   const cloud = this.add.image(config.width / 2 , config.height / 2 , 'cloud');
-    
-  //   this.cloudGroup.add(cloud);
-    
-   
-    
-  // }
-
-  // getting rightmost mountain x position
-  getRightmostCloud() {
-    let rightmostCloud = -200;
-    this.cloudGroup.getChildren().forEach((cloud) => {
-      rightmostCloud = Math.max(rightmostCloud, cloud.x);
-    });
-    return rightmostCloud;
   }
 
   addPlatform(platformWidth, posX, posY) {
@@ -194,21 +235,12 @@ export default class GameScene extends Phaser.Scene {
       platform.displayWidth = platformWidth;
       platform.tileScaleX = 1 / platform.scaleX;
     } else {
-      platform = this.add.tileSprite(posX, posY, platformWidth, 32, 'platform6');
+      platform = this.add.tileSprite(posX, posY, platformWidth, 80, 'platform');
       this.physics.add.existing(platform);
       platform.body.setImmovable(true);
       platform.body.setVelocityX(Phaser.Math.Between(gameOptions().platformSpeedRange[0], gameOptions().platformSpeedRange[1]) * -1);
       platform.setDepth(2);
       this.platformGroup.add(platform);
-
-      if (gameOptions().platformVerticalLimit[0.7]) {
-        platform = this.add.tileSprite(posX, posY, platformWidth, 32, 'platform5');
-        this.physics.add.existing(platform);
-        platform.body.setImmovable(true);
-        platform.body.setVelocityX(Phaser.Math.Between(gameOptions().platformSpeedRange[0], gameOptions().platformSpeedRange[1]) * -1);
-        platform.setDepth(2);
-        this.platformGroup.add(platform);
-      }
     }
     this.nextPlatformDistance = Phaser.Math.Between(gameOptions().spawnRange[0], gameOptions().spawnRange[1]);
     // if this is not the starting platform...
@@ -236,20 +268,40 @@ export default class GameScene extends Phaser.Scene {
       if (Phaser.Math.Between(1, 100) <= gameOptions().firePercent) {
         if (this.firePool.getLength()) {
           const fire = this.firePool.getFirst();
-          fire.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth);
-          fire.y = posY - 40;
+          fire.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth / 2);
+          fire.y = posY - 70;
           fire.alpha = 1;
           fire.active = true;
           fire.visible = true;
           this.firePool.remove(fire);
         } else {
-          const fire = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 40, 'fire');
+          const fire = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 70, 'fire');
           fire.setImmovable(true);
           fire.setVelocityX(platform.body.velocity.x);
-          fire.setSize(8, 2, true);
+          fire.setSize(6, 2, true);
           fire.anims.play('burn');
-          fire.setDepth(2);
+          fire.setDepth(1);
           this.fireGroup.add(fire);
+        }
+      }
+
+      if (Phaser.Math.Between(1, 100) <= gameOptions().treePercent) {
+        if (this.treePool.getLength()) {
+          const tree = this.treePool.getFirst();
+          tree.x = posX;
+          tree.y = posY - 115;
+          tree.alpha = 1;
+          tree.active = true;
+          tree.visible = true;
+          tree.setScale(0.5);
+          this.treePool.remove(tree);
+        } else {
+          const tree = this.physics.add.sprite(posX, posY - 115, 'tree');
+          tree.setImmovable(true);
+          tree.setVelocityX(platform.body.velocity.x);
+          tree.setDepth(0);
+          tree.setScale(0.5);
+          this.treeGroup.add(tree);
         }
       }
     }
@@ -300,19 +352,18 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
+    this.treeGroup.getChildren().forEach(function (tree) {
+      if (tree.x < -tree.displayWidth / 2) {
+        this.treeGroup.killAndHide(tree);
+        this.treeGroup.remove(tree);
+      }
+    }, this);
+
     // recycling fire
     this.fireGroup.getChildren().forEach(function (fire) {
       if (fire.x < -fire.displayWidth / 2) {
         this.fireGroup.killAndHide(fire);
         this.fireGroup.remove(fire);
-      }
-    }, this);
-
-    // recycling mountains
-    this.cloudGroup.getChildren().forEach(function (cloud) {
-      if (cloud.x < -cloud.displayWidth / 2) {
-        this.cloudGroup.killAndHide(cloud);
-        this.fireGroup.remove(cloud);
       }
     }, this);
 

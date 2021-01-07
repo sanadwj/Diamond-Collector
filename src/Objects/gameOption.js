@@ -40,7 +40,17 @@ const option = () => {
     dimPercent: 25,
 
     // % of probability a fire appears on the platform
-    firePercent: 25,
+    firePercent: 20,
+
+    treePercent: 20,
+
+    bushPercent: 20,
+
+    rockPercent: 10,
+
+    mashroomPercent: 10,
+
+    waterPercent: 100,
 
     platforms: ['platform', 'platform3', 'platform4', 'platform5', 'platform6']
   };
