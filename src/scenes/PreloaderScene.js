@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable radix */
 import 'phaser';
+import config from '../Config/config';
 import buttonOne from '../assets/ui/Button_Play.png';
 import buttonTwo from '../assets/ui/Button_06.png';
 import backBtnOne from '../assets/ui/Button_78.png';
@@ -35,14 +36,14 @@ export default class PreloaderScene extends Phaser.Scene {
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.fillRect(config.width / 2 - 130, config.height / 2 - 50, 320, 50);
 
 
     const { width } = this.cameras.main;
     const { height } = this.cameras.main;
     const loadingText = this.make.text({
       x: width / 2,
-      y: height / 2 - 60,
+      y: height / 2 - 25,
       text: 'Loading...',
       style: {
         font: '20px monospace',
@@ -78,7 +79,7 @@ export default class PreloaderScene extends Phaser.Scene {
       percentText.setText(`${parseInt(value * 100)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+      progressBar.fillRect(config.width / 2 - 120, config.height / 2 - 40, 300 * value, 30);
     });
 
     this.load.on('complete', (file) => {
@@ -94,7 +95,7 @@ export default class PreloaderScene extends Phaser.Scene {
       this.ready();
     });
 
-    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(5000, this.ready, [], this);
 
     this.load.image('buttonOne', buttonOne);
     this.load.image('backBtnOne', backBtnOne);
