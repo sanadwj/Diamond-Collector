@@ -26,6 +26,7 @@ import homeTwo from '../assets/ui/Button_19.png';
 import playOne from '../assets/ui/Button_14.png';
 import playTwo from '../assets/ui/Button_15.png';
 import board from '../assets/ui/Windows_38.png';
+import scoreBoard from '../assets/ui/Windows_37.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -107,11 +108,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('playTwo', playTwo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkBox);
-    this.load.audio('bgMusic', ['../src/assets/TownTheme.mp3']);
+    this.load.audio('bgMusic', ['../src/assets/happy.mp3']);
 
 
     this.load.image('platform', platform);
     this.load.image('board', board);
+    this.load.image('scoreBoard', scoreBoard);
     this.load.image('water', water);
     this.load.image('bground', background);
     this.load.image('dim', dim);

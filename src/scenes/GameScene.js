@@ -16,6 +16,7 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     this.add.image(config.width / 2, config.height / 2, 'bground');
+    this.add.image(config.width / 2, config.height / 2 - 300, 'scoreBoard');
 
 
     this.cloudGroup = this.add.group();
@@ -113,7 +114,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.addPlatform(config.width, config.width / 2, config.height * gameOptions().platformVerticalLimit[1]);
 
-    scoreText = this.add.text(16, 20, 'score: 0', { fontSize: '32px', fill: '#940000', textalign: 'center' });
+    scoreText = this.add.text(config.width / 2 - 50, config.height / 2 - 315, '0', { fontSize: '32px', fill: '#ffffff', textalign: 'center' }).setDepth(2);
 
     this.player = this.physics.add.sprite(gameOptions().playerStartPosition, config.height * 0.7, 'robo');
     this.player.scaleX = 0.25;
@@ -401,7 +402,6 @@ export default class GameScene extends Phaser.Scene {
   collectStar(player, dim) {
     dim.disableBody(true, true);
     scored += 10;
-    console.log(scored);
-    scoreText.setText(`Your Score: ${scored}`);
+    scoreText.setText(`${scored}`);
   }
 }

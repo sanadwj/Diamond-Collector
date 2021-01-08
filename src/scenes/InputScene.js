@@ -21,7 +21,7 @@ export default class InputScene extends Phaser.Scene {
         if (inputName.value !== '') {
           element.style.display = 'none';
           scoreData.nameSetter(inputName.value);
-          self.scene.start('Game');
+          this.scene.start('Game');
         } else {
           const warning = document.getElementById('warning');
           warning.style.display = 'block';

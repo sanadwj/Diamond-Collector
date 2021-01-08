@@ -2,22 +2,23 @@ body {
   padding: 0;
   box-sizing: border-box;
   text-align: center;
-  background-color: #000;
+  background-color: rgb(221, 247, 255);
+  overflow-y: hidden;
 }
 
 canvas {
   margin: auto !important;
   text-align: center !important;
   box-sizing: border-box !important;
-  width: 100%;
   height: auto;
+  -webkit-box-shadow: 4px 22px 31px 3px rgba(0,0,0,0.75) !important;
+  -moz-box-shadow: 4px 22px 31px 3px rgba(0,0,0,0.75) !important;
+  box-shadow: 4px 22px 31px 3px rgba(0,0,0,0.75) !important;
 }
 
 #name-form {
   display: none;
   background: transparent;
-  border: 1px solid #42464b;
-  border-radius: 15px;
   width: 500px;
   height: 300px;
   margin:  0 auto;
@@ -58,7 +59,7 @@ input[name="saveNameBtn"] {
   text-align: center;
   text-shadow: 1px 1px 0px #a68837;
   padding-top: 6px;
-  margin: 29px 0 0 220px;
+  margin: 36px 0 0 220px;
   position: relative;
   cursor: pointer;
   border: none;
