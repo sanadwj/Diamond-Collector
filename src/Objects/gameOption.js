@@ -13,7 +13,7 @@ const option = () => {
     spawnRange: [80, 300],
 
     // platform width range, in pixels
-    platformSizeRange: [90, 300],
+    platformSizeRange: [100, 300],
 
     // a height range between rightmost platform and next platform to be spawned
     platformHeightRange: [-5, 5],
@@ -42,17 +42,15 @@ const option = () => {
     // % of probability a fire appears on the platform
     firePercent: 20,
 
-    treePercent: 20,
+    treePercent: 15,
 
-    bushPercent: 20,
+    bushPercent: 15,
 
-    rockPercent: 10,
+    stonePercent: 5,
 
     mashroomPercent: 10,
 
     waterPercent: 100,
-
-    platforms: ['platform', 'platform3', 'platform4', 'platform5', 'platform6']
   };
 
   return gameOptions;

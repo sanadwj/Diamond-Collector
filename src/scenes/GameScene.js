@@ -1,22 +1,9 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable max-len */
-/* eslint-disable func-names */
-/* eslint-disable class-methods-use-this */
-import 'phaser';
+/* eslint-disable no-unused-vars, no-plusplus, max-len, func-names, class-methods-use-this */
+import Phaser from 'phaser';
 import config from '../Config/config';
-// import addPlatform from '../Objects/addPlatform';
 import gameOptions from '../Objects/gameOption';
 
-let game;
-let cursors;
-let player;
-let jumpButton;
-
-// global game options
-
 window.focus();
-// resize();
-// window.addEventListener('resize', resize, false);
 
 
 export default class GameScene extends Phaser.Scene {
@@ -25,27 +12,18 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
-
     this.add.image(config.width / 2, config.height / 2, 'bground');
 
-    // this.add.image(config.width * 2, config.height / 2 + 320, 'water');
 
-    // group with all active mountains.
     this.cloudGroup = this.add.group();
 
-    // group with all active platforms.
     this.platformGroup = this.add.group({
-
-      // once a platform is removed, it's added to the pool
       removeCallback(platform) {
         platform.scene.platformPool.add(platform);
       },
     });
 
-    // platform pool
     this.platformPool = this.add.group({
-
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(platform) {
         platform.scene.platformGroup.add(platform);
       },
@@ -53,16 +31,12 @@ export default class GameScene extends Phaser.Scene {
 
 
     this.treeGroup = this.add.group({
-
-      // once a platform is removed, it's added to the pool
       removeCallback(tree) {
         tree.scene.treePool.add(tree);
       },
     });
 
     this.treePool = this.add.group({
-
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(tree) {
         tree.scene.treeGroup.add(tree);
       },
@@ -70,32 +44,24 @@ export default class GameScene extends Phaser.Scene {
 
 
     this.bushGroup = this.add.group({
-
-      // once a platform is removed, it's added to the pool
       removeCallback(bush) {
         bush.scene.bushPool.add(bush);
       },
     });
 
     this.bushPool = this.add.group({
-
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(bush) {
         bush.scene.bushGroup.add(bush);
       },
     });
 
     this.stoneGroup = this.add.group({
-
-      // once a platform is removed, it's added to the pool
       removeCallback(stone) {
         stone.scene.stonePool.add(stone);
       },
     });
 
     this.stonePool = this.add.group({
-
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(stone) {
         stone.scene.stoneGroup.add(stone);
       },
@@ -103,85 +69,61 @@ export default class GameScene extends Phaser.Scene {
 
 
     this.mashroomGroup = this.add.group({
-
-      // once a platform is removed, it's added to the pool
       removeCallback(mashroom) {
         mashroom.scene.mashroomPool.add(mashroom);
       },
     });
 
     this.mashroomPool = this.add.group({
-
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback(mashroom) {
         mashroom.scene.mashroomGroup.add(mashroom);
       },
     });
 
-    // group with all active coins.
     this.dimGroup = this.add.group({
-
-      // once a coin is removed, it's added to the pool
       removeCallback(dim) {
         dim.scene.dimPool.add(dim);
       },
     });
 
-    // coin pool
     this.dimPool = this.add.group({
-
-      // once a coin is removed from the pool, it's added to the active coins group
       removeCallback(dim) {
         dim.scene.dimGroup.add(dim);
       },
     });
 
-    // group with all active firecamps.
     this.fireGroup = this.add.group({
-
-      // once a firecamp is removed, it's added to the pool
       removeCallback(fire) {
         fire.scene.firePool.add(fire);
       },
     });
 
-    // fire pool
     this.firePool = this.add.group({
-
-      // once a fire is removed from the pool, it's added to the active fire group
       removeCallback(fire) {
         fire.scene.fireGroup.add(fire);
       },
     });
 
-    // keeping track of added platforms
     this.addedPlatforms = 0;
 
-    // number of consecutive jumps made by the player so far
     this.playerJumps = 0;
 
-    // adding a platform to the game, the arguments are platform width, x position and y position
     this.addPlatform(config.width, config.width / 2, config.height * gameOptions().platformVerticalLimit[1]);
 
-    // adding the player;
     this.player = this.physics.add.sprite(gameOptions().playerStartPosition, config.height * 0.7, 'robo');
     this.player.scaleX = 0.25;
     this.player.scaleY = 0.25;
     this.player.setGravityY(gameOptions().playerGravity);
     this.player.setDepth(2);
 
-    // the player is not dying
     this.dying = false;
 
-    // setting collisions between the player and the platform group
     this.platformCollider = this.physics.add.collider(this.player, this.platformGroup, function () {
-      // play "run" animation if the player is on a platform
       if (!this.player.anims.isPlaying) {
         this.player.anims.play('run');
       }
     }, null, this);
 
-    // setting collisions between the player and the coin group
     this.physics.add.overlap(this.player, this.dimGroup, function (player, dim) {
       this.tweens.add({
         targets: dim,
@@ -197,7 +139,6 @@ export default class GameScene extends Phaser.Scene {
       });
     }, null, this);
 
-    // setting collisions between the player and the fire group
     this.physics.add.overlap(this.player, this.fireGroup, function () {
       this.dying = true;
       this.player.anims.play('died');
@@ -212,12 +153,18 @@ export default class GameScene extends Phaser.Scene {
 
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.waterGroup, () => {
+    this.physics.add.overlap(this.player, this.bushGroup, () => {
 
     }, null, this);
 
+    this.physics.add.overlap(this.player, this.stoneGroup, () => {
 
-    // checking for input
+    }, null, this);
+
+    this.physics.add.overlap(this.player, this.stoneGroup, () => {
+
+    }, null, this);
+
     this.input.keyboard.on('keydown-SPACE', this.jump, this);
   }
 
@@ -243,20 +190,19 @@ export default class GameScene extends Phaser.Scene {
       this.platformGroup.add(platform);
     }
     this.nextPlatformDistance = Phaser.Math.Between(gameOptions().spawnRange[0], gameOptions().spawnRange[1]);
-    // if this is not the starting platform...
+
     if (this.addedPlatforms > 1) {
-      // is there a coin over the platform?
       if (Phaser.Math.Between(1, 100) <= gameOptions().dimPercent) {
         if (this.dimPool.getLength()) {
           const dim = this.dimPool.getFirst();
           dim.x = posX;
-          dim.y = posY - 74;
+          dim.y = posY - 80;
           dim.alpha = 1;
           dim.active = true;
           dim.visible = true;
           this.dimPool.remove(dim);
         } else {
-          const dim = this.physics.add.sprite(posX, posY - 60, 'dim');
+          const dim = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 80, 'dim');
           dim.setImmovable(true);
           dim.setVelocityX(platform.body.velocity.x);
           dim.setDepth(2);
@@ -264,7 +210,6 @@ export default class GameScene extends Phaser.Scene {
         }
       }
 
-      // is there a fire over the platform?
       if (Phaser.Math.Between(1, 100) <= gameOptions().firePercent) {
         if (this.firePool.getLength()) {
           const fire = this.firePool.getFirst();
@@ -288,11 +233,8 @@ export default class GameScene extends Phaser.Scene {
       if (Phaser.Math.Between(1, 100) <= gameOptions().treePercent) {
         if (this.treePool.getLength()) {
           const tree = this.treePool.getFirst();
-          tree.x = posX;
+          tree.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth / 2);
           tree.y = posY - 115;
-          tree.alpha = 1;
-          tree.active = true;
-          tree.visible = true;
           tree.setScale(0.5);
           this.treePool.remove(tree);
         } else {
@@ -302,6 +244,57 @@ export default class GameScene extends Phaser.Scene {
           tree.setDepth(0);
           tree.setScale(0.5);
           this.treeGroup.add(tree);
+        }
+      }
+
+      if (Phaser.Math.Between(1, 100) <= gameOptions().bushPercent) {
+        if (this.bushPool.getLength()) {
+          const bush = this.bushPool.getFirst();
+          bush.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth / 2) - 30;
+          bush.y = posY - 50;
+          bush.setScale(0.6);
+          this.bushPool.remove(bush);
+        } else {
+          const bush = this.physics.add.sprite(posX - 30, posY - 50, 'bush');
+          bush.setImmovable(true);
+          bush.setVelocityX(platform.body.velocity.x);
+          bush.setDepth(0);
+          bush.setScale(0.6);
+          this.bushGroup.add(bush);
+        }
+      }
+
+      if (Phaser.Math.Between(1, 100) <= gameOptions().stonePercent) {
+        if (this.stonePool.getLength()) {
+          const stone = this.stonePool.getFirst();
+          stone.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth / 2) - 30;
+          stone.y = posY - 50;
+          stone.setScale(0.6);
+          this.stonePool.remove(stone);
+        } else {
+          const stone = this.physics.add.sprite(posX + 20, posY - 50, 'stone');
+          stone.setImmovable(true);
+          stone.setVelocityX(platform.body.velocity.x);
+          stone.setDepth(0);
+          stone.setScale(0.6);
+          this.stoneGroup.add(stone);
+        }
+      }
+
+      if (Phaser.Math.Between(1, 100) <= gameOptions().mashroomPercent) {
+        if (this.mashroomPool.getLength()) {
+          const mashroom = this.mashroomPool.getFirst();
+          mashroom.x = posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth / 2) - 30;
+          mashroom.y = posY - 50;
+          mashroom.setScale(0.6);
+          this.mashroomPool.remove(mashroom);
+        } else {
+          const mashroom = this.physics.add.sprite(posX - 20, posY - 50, 'mashroom');
+          mashroom.setImmovable(true);
+          mashroom.setVelocityX(platform.body.velocity.x);
+          mashroom.setDepth(0);
+          mashroom.setScale(0.6);
+          this.mashroomGroup.add(mashroom);
         }
       }
     }
@@ -314,22 +307,19 @@ export default class GameScene extends Phaser.Scene {
       }
       this.player.anims.play('jumping');
       this.player.setVelocityY(gameOptions().jumpForce * -1);
-      this.playerJumps ++;
+      this.playerJumps++;
 
-      // stops animation
       this.player.anims.stop();
     }
   }
 
   update() {
-    // game over
     if (this.player.y > config.height) {
       this.scene.start('Game');
     }
 
     this.player.x = gameOptions().playerStartPosition;
 
-    // recycling platforms
     let minDistance = config.width;
     let rightmostPlatformHeight = 0;
     this.platformGroup.getChildren().forEach(function (platform) {
@@ -344,7 +334,6 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling coins
     this.dimGroup.getChildren().forEach(function (dim) {
       if (dim.x < -dim.displayWidth / 2) {
         this.dimGroup.killAndHide(dim);
@@ -359,7 +348,6 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // recycling fire
     this.fireGroup.getChildren().forEach(function (fire) {
       if (fire.x < -fire.displayWidth / 2) {
         this.fireGroup.killAndHide(fire);
@@ -367,7 +355,28 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    // adding new platforms
+    this.bushGroup.getChildren().forEach(function (bush) {
+      if (bush.x < -bush.displayWidth / 2) {
+        this.bushGroup.killAndHide(bush);
+        this.bushGroup.remove(bush);
+      }
+    }, this);
+
+    this.stoneGroup.getChildren().forEach(function (stone) {
+      if (stone.x < -stone.displayWidth / 2) {
+        this.stoneGroup.killAndHide(stone);
+        this.stoneGroup.remove(stone);
+      }
+    }, this);
+
+
+    this.mashroomGroup.getChildren().forEach(function (mashroom) {
+      if (mashroom.x < -mashroom.displayWidth / 2) {
+        this.mashroomGroup.killAndHide(mashroom);
+        this.mashroomGroup.remove(mashroom);
+      }
+    }, this);
+
     if (minDistance > this.nextPlatformDistance) {
       const nextPlatformWidth = Phaser.Math.Between(gameOptions().platformSizeRange[0], gameOptions().platformSizeRange[1]);
       const platformRandomHeight = gameOptions().platformHeighScale * Phaser.Math.Between(gameOptions().platformHeightRange[0], gameOptions().platformHeightRange[1]);

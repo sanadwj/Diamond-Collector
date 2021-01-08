@@ -110,7 +110,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('dim', dim);
     this.load.image('tree', tree);
     this.load.image('bush', bush);
-    this.load.image('stoun', stone);
+    this.load.image('stone', stone);
     this.load.image('mashroom', mashroom);
     this.load.spritesheet('fire', fire, {
       frameWidth: 64,
