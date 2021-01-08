@@ -10,7 +10,8 @@ export default class LeaderBoard extends Phaser.Scene {
   }
 
   create() {
-    this.add.text(config.width / 3, 8, 'LEADERBOARD', { color: 'white', fontSize: '28px' });
+    this.add.image(config.width / 2, config.height / 2, 'board').setScale(2);
+    this.add.text(config.width / 2 - 80, config.height / 2 - 280, 'LEADERBOARD', { color: '#5d1512', fontFamily: 'Arial', fontSize: '32px' });
 
     const menuButton = document.getElementById('menu');
     menuButton.style.display = 'block';
@@ -20,6 +21,7 @@ export default class LeaderBoard extends Phaser.Scene {
       this.scene.start('Title');
       score.style.display = 'none';
       menuButton.style.display = 'none';
+      score.innerHTML = '';
     });
     scoreBoard.create();
   }

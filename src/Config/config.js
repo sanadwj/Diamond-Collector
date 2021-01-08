@@ -19,8 +19,8 @@ export default {
       height: 600,
     },
     max: {
-      width: 1920,
-      height: 1080,
+      width: 1024,
+      height: 720,
     },
   },
   physics: {

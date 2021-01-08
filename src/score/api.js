@@ -5,6 +5,7 @@ const score = (function() {
 
   async function postScores() {
     const fullData = data;
+    console.log(fullData);
     try {
       const response = await fetch(url, {
         method: 'POST',

@@ -2,8 +2,11 @@
 import Phaser from 'phaser';
 import config from '../Config/config';
 import gameOptions from '../Objects/gameOption';
+import score from '../score/api';
 
 window.focus();
+let scoreText;
+let scored = 0;
 
 
 export default class GameScene extends Phaser.Scene {
@@ -110,6 +113,8 @@ export default class GameScene extends Phaser.Scene {
 
     this.addPlatform(config.width, config.width / 2, config.height * gameOptions().platformVerticalLimit[1]);
 
+    scoreText = this.add.text(16, 20, 'score: 0', { fontSize: '32px', fill: '#940000', textalign: 'center' });
+
     this.player = this.physics.add.sprite(gameOptions().playerStartPosition, config.height * 0.7, 'robo');
     this.player.scaleX = 0.25;
     this.player.scaleY = 0.25;
@@ -137,6 +142,7 @@ export default class GameScene extends Phaser.Scene {
           this.dimGroup.remove(dim);
         },
       });
+      this.collectStar(player, dim);
     }, null, this);
 
     this.physics.add.overlap(this.player, this.fireGroup, function () {
@@ -315,8 +321,12 @@ export default class GameScene extends Phaser.Scene {
 
   update() {
     if (this.player.y > config.height) {
+      const final = scored;
+      score.scoreSetter(final);
+      score.postScores();
       this.scene.start('GameOver');
     }
+
 
     this.player.x = gameOptions().playerStartPosition;
 
@@ -386,5 +396,12 @@ export default class GameScene extends Phaser.Scene {
       const nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap, minPlatformHeight, maxPlatformHeight);
       this.addPlatform(nextPlatformWidth, config.width + nextPlatformWidth / 2, nextPlatformHeight);
     }
+  }
+
+  collectStar(player, dim) {
+    dim.disableBody(true, true);
+    scored += 10;
+    console.log(scored);
+    scoreText.setText(`Your Score: ${scored}`);
   }
 }

@@ -24,7 +24,7 @@ import homeOne from '../assets/ui/Button_18.png';
 import homeTwo from '../assets/ui/Button_19.png';
 import playOne from '../assets/ui/Button_14.png';
 import playTwo from '../assets/ui/Button_15.png';
-import board from '../assets/ui/Windows_17.png';
+import board from '../assets/ui/Windows_38.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {

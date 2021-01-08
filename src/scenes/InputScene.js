@@ -6,8 +6,8 @@ import scoreData from '../score/api';
 export default class InputScene extends Phaser.Scene {
 
   create() {
-    const self = this;
-    const text = this.add.text(config.width / 2 - 80, config.height / 2 - 250, 'Please, enter your name', { color: 'white', fontFamily: 'Arial', fontSize: '28px ' });
+    this.add.image(config.width / 2, config.height / 2, 'board').setScale(2);
+    const text = this.add.text(config.width / 2 - 90, config.height / 2 - 250, 'Please, enter your name', { color: '#5d1512', fontFamily: 'Arial', fontSize: '32px ' });
     text.setScale(0.7);
     const element = document.getElementById('name-form');
     element.style.display = 'block';
