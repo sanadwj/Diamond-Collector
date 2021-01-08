@@ -19,7 +19,7 @@ export default class InputScene extends Phaser.Scene {
 
 
         if (inputName.value !== '') {
-          element.remove();
+          element.style.display = 'none';
           scoreData.nameSetter(inputName.value);
           self.scene.start('Game');
         } else {

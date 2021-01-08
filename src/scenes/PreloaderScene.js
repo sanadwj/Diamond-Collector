@@ -5,10 +5,8 @@ import buttonOne from '../assets/ui/Button_Play.png';
 import buttonTwo from '../assets/ui/Button_06.png';
 import backBtnOne from '../assets/ui/Button_78.png';
 import backBtnTwo from '../assets/ui/Button_79.png';
-import logo from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkBox from '../assets/ui/blue_boxCheckmark.png';
-import bg from '../assets/red/bkg1_front5.png';
 import platform from '../assets/platforms/platform.png';
 import dim from '../assets/dim.png';
 import robo from '../assets/run.png';
@@ -22,7 +20,11 @@ import tree from '../assets/objects/Tree_2.png';
 import stone from '../assets/objects/Stone.png';
 import mashroom from '../assets/objects/Mushroom_2.png';
 import water from '../assets/platforms/water.png';
-
+import homeOne from '../assets/ui/Button_18.png';
+import homeTwo from '../assets/ui/Button_19.png';
+import playOne from '../assets/ui/Button_14.png';
+import playTwo from '../assets/ui/Button_15.png';
+import board from '../assets/ui/Windows_17.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -98,13 +100,17 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('backBtnOne', backBtnOne);
     this.load.image('backBtnTwo', backBtnTwo);
     this.load.image('buttonTwo', buttonTwo);
-    this.load.image('logo', logo);
+    this.load.image('homeOne', homeOne);
+    this.load.image('homeTwo', homeTwo);
+    this.load.image('playOne', playOne);
+    this.load.image('playTwo', playTwo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkBox);
     this.load.audio('bgMusic', ['../src/assets/TownTheme.mp3']);
 
 
     this.load.image('platform', platform);
+    this.load.image('board', board);
     this.load.image('water', water);
     this.load.image('bground', background);
     this.load.image('dim', dim);
@@ -177,8 +183,6 @@ export default class PreloaderScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-
-
   }
 
   init() {

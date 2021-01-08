@@ -315,7 +315,7 @@ export default class GameScene extends Phaser.Scene {
 
   update() {
     if (this.player.y > config.height) {
-      this.scene.start('Game');
+      this.scene.start('GameOver');
     }
 
     this.player.x = gameOptions().playerStartPosition;
