@@ -33,6 +33,14 @@
 
 ![](./src/assets/diamond-collector.gif)
 
+<br>
+
+## Live Demo
+
+[Live Demo](https://agitated-curran-7c280e.netlify.app/)
+
+<br>
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
