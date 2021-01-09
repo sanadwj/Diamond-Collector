@@ -1,0 +1,178 @@
+body {
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgb(221, 247, 255);
+  overflow-y: hidden;
+}
+
+canvas {
+  margin: auto !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  height: auto;
+  -webkit-box-shadow: 4px 22px 31px 3px rgba(0, 0, 0, 0.75) !important;
+  -moz-box-shadow: 4px 22px 31px 3px rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 4px 22px 31px 3px rgba(0, 0, 0, 0.75) !important;
+}
+
+#name-form {
+  display: none;
+  background: transparent;
+  width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+  bottom: 25%;
+}
+
+input[type="text"] {
+  background-color: #ccc;
+  border: 1px solid #a1a3a3;
+  border-radius: 15px;
+  box-shadow: 0 1px #fff;
+  box-sizing: border-box;
+  color: #696969;
+  height: 50px;
+  margin: 31px 0 0 29px;
+  padding-left: 37px;
+  transition: box-shadow 0.3s;
+  width: 340px;
+}
+
+input[name="saveNameBtn"] {
+  width: 75px;
+  height: 75px;
+  display: block;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0 #a68837;
+  padding-top: 6px;
+  margin: 36px 0 0 220px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background-image: url(../assets/ui/Button_14.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+input[name="back"] {
+  width: 75px;
+  height: 75px;
+  display: block;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0 #a68837;
+  padding-top: 6px;
+  margin: 29px 0 0 220px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background-image: url(../assets/ui/Button_78.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.shadow {
+  background: #000;
+  border-radius: 12px 12px 4px 4px;
+  box-shadow: 0 0 20px 10px #000;
+  height: 12px;
+  margin: 30px auto;
+  opacity: 0.2;
+  width: 270px;
+}
+
+input[name="saveNameBtn"]:hover {
+  background-image: url(../assets/ui/Button_15.png);
+}
+
+input[name="back"]:hover {
+  background-image: url(../assets/ui/Button_79.png);
+}
+
+#score {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: #5d1512;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  right: 25%;
+  width: 50%;
+  height: auto;
+}
+
+#score > span {
+  width: auto;
+  padding: 8%;
+}
+
+#menu {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  right: 50%;
+  width: 75px;
+  height: 75px;
+  display: none;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0 #a68837;
+  padding-top: 6px;
+  cursor: pointer;
+  border: none;
+  background-image: url(../assets/ui/Button_78.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+#menu:hover {
+  background-image: url(../assets/ui/Button_79.png);
+}
+
+#warning {
+  display: none;
+}
