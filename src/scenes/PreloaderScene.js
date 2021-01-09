@@ -27,6 +27,7 @@ import playTwo from '../assets/ui/Button_15.png';
 import board from '../assets/ui/Windows_38.png';
 import scoreBoard from '../assets/ui/Windows_37.png';
 
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');

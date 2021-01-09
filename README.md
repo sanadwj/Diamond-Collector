@@ -89,13 +89,20 @@ const key = 'Enter Your API';
 ```
 5. Run Webpack dev-server
 ```sh
-npm run start;
+npm run start
 ```
-6. Enjoy!
+6. Run the Tests:
+```sh
+npm run test
+```
 
 ## How to play
 
-* Use SpaceBar to jump between platforms and avoid obstacles
+* Use SpaceBar to jump between platforms, collect diamonds, and avoid obstacles
+
+## Game Documentation 
+
+[Diamond-Collector](https://docs.google.com/document/d/14_iBzd4NHNYhKuvc4AHw_zV8wyHeAqtlFOyVM4g-Y8Y/edit?usp=sharing)
 
 
 <!-- CONTRIBUTING -->

@@ -3,7 +3,6 @@ import Phaser from 'phaser';
 
 import config from '../Config/config';
 import Button from '../Objects/Button';
-import bg from '../assets/ui/BG.png';
 
 
 export default class TitleScene extends Phaser.Scene {
@@ -11,12 +10,8 @@ export default class TitleScene extends Phaser.Scene {
     super('Title');
   }
 
-  preload() {
-    this.load.image('bg', bg);
-  }
-
   create() {
-    this.add.image(config.width / 2, config.height / 2, 'bg').setDepth(-1);
+    this.add.image(config.width / 2, config.height / 2, 'bground').setDepth(-1);
 
     this.add.text(config.width / 2 - 220, config.height / 2 - 325, 'DIAMOND COLLECTOR', { color: '#5d1512', fontFamily: 'Arial', fontSize: '42px ' });
 

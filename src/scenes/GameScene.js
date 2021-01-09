@@ -7,7 +7,6 @@ import score from '../score/api';
 let scoreText;
 let scored = 0;
 
-window.focus();
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
