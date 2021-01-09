@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-
 import config from '../Config/config';
 import Button from '../Objects/Button';
 
@@ -19,6 +18,5 @@ export default class GameOverScene extends Phaser.Scene {
 
     const gameOverText = this.add.text(config.width / 2, config.height / 2 - 165, 'GAME OVER', { fontSize: '44px', fill: '#940000' });
     gameOverText.setOrigin(0.5);
-
   }
 }

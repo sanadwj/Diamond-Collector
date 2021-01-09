@@ -2,6 +2,23 @@
   "name": "toBENamed",
   "version": "1.0.0",
   "description": "<!-- *** Thanks for checking out this README Template. If you have a suggestion that would *** make this better, please fork the repo and create a pull request or simply open *** an issue with the tag \"enhancement\". *** Thanks again! Now go create something AMAZING! :D -->",
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/mocks/styleMock.js",
+      "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/mocks/fileMock.js"
+    },
+    "modulePathIgnorePatterns": ["<rootDir>/externals"]
+  },
   "main": "index.js",
   "dependencies": {
     "babel-eslint": "^10.1.0",
@@ -24,13 +41,20 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
+    "axios": "^0.21.1",
     "babel-core": "^6.26.3",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.0",
+    "jest-expect-subclass": "^1.0.1",
+    "node-fetch": "^2.6.1",
     "raw-loader": "^4.0.2",
     "resolve-url-loader": "^3.1.2",
+    "ts-jest": "^26.4.4",
     "webpack": "^5.10.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"

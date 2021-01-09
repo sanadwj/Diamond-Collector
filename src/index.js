@@ -1,6 +1,6 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import 'phaser';
+import Phaser from 'phaser';
 import Model from './Model';
 import config from './Config/config';
 import BootScene from './scenes/BootScene';

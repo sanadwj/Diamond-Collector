@@ -4,7 +4,6 @@ import config from '../Config/config';
 import scoreData from '../score/api';
 
 export default class InputScene extends Phaser.Scene {
-
   create() {
     this.add.image(config.width / 2, config.height / 2, 'board').setScale(2);
     const text = this.add.text(config.width / 2 - 90, config.height / 2 - 250, 'Please, enter your name', { color: '#5d1512', fontFamily: 'Arial', fontSize: '32px ' });

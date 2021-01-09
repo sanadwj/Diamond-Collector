@@ -1,13 +1,13 @@
-/* eslint-disable no-unused-vars, no-plusplus, max-len, func-names, class-methods-use-this */
+/* eslint-disable no-unused-vars, no-plusplus, max-len, func-names,prefer-const, class-methods-use-this */
 import Phaser from 'phaser';
 import config from '../Config/config';
 import gameOptions from '../Objects/gameOption';
 import score from '../score/api';
 
-window.focus();
 let scoreText;
 let scored = 0;
 
+window.focus();
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -322,9 +322,10 @@ export default class GameScene extends Phaser.Scene {
 
   update() {
     if (this.player.y > config.height) {
-      const final = scored;
+      let final = scored;
       score.scoreSetter(final);
       score.postScores();
+      scored = 0;
       this.scene.start('GameOver');
     }
 

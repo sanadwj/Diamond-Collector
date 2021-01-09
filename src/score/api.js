@@ -1,11 +1,12 @@
-const score = (function() {
+/* eslint-disable func-names */
+
+const score = (function () {
   const key = 'mvL8ceYflPrxY5JcKGzL';
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${key}/scores/`;
   const data = {};
 
   async function postScores() {
     const fullData = data;
-    console.log(fullData);
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -27,9 +28,9 @@ const score = (function() {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
     }
   }

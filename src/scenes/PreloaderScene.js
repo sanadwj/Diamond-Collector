@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
-/* eslint-disable radix */
+/* eslint-disable no-undef, radix */
 import 'phaser';
 import config from '../Config/config';
-import buttonOne from '../assets/ui/Button_Play.png';
 import buttonTwo from '../assets/ui/Button_06.png';
+import buttonOne from '../assets/ui/Button_Play.png';
 import backBtnOne from '../assets/ui/Button_78.png';
 import backBtnTwo from '../assets/ui/Button_79.png';
 import box from '../assets/ui/grey_box.png';
